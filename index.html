@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="pond">
+      Fish Population:
+      <input
+        type="number"
+        id="population"
+        :value="fishPopulation"
+        min="0"
+      /><br />
+      Number of Players:
+      <input type="number" id="players" v-model="playerCount" min="0" /><br />
+      Technological Frontier:
+      <input v-model="techFrontier" type="number" id="tech" min="0" /><br />
+      Fertility Rate:
+      <input type="number" id="growth" v-model="fertilityRate" /><br /><br />
+
+      <p>Long-term Balance for this Tech-Level: {{longTermBalance}}</p>
+      <p>
+        Recommendation for this round: {{calculatedRecommendation}}
+        ({{recommendation}})
+      </p>
+
+      Fish caught:
+      <input type="number" id="fish" min="0" v-model="caughtFish" /><br />
+      <input
+        type="button"
+        value="Run 1 Round!"
+        @click="calculatePopulation"
+      /><br /><br />
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="pond.js"></script>
+  </body>
+</html>

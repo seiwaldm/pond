@@ -1,0 +1,41 @@
+<script>
+function getRecommendation() {
+  var population = document.getElementById('population').value;
+  var players = document.getElementById('players').value;
+  var tech = document.getElementById('tech').value;
+  var growth = document.getElementById('growth').value;
+  
+  document.getElementById('globalBalance').innerHTML = Math.ceil(tech * players + tech * players / growth * 100);
+  
+  for (i = tech; i > 0; i--){
+    var result = population - (players * i);
+    var localBalance = Math.floor(i * players / growth * 100);
+    if (result > localBalance) {
+        document.getElementById('rule').innerHTML = i;
+        break;
+        }
+    document.getElementById('rule').innerHTML = "Take a break!";
+  } 
+}
+
+function calcPopulation() {
+  var population = document.getElementById('population').value;
+  var growth = document.getElementById('growth').value;
+  var fish = document.getElementById('fish').value;
+  
+  document.getElementById('population').value = Math.floor((population - fish) * (1 + growth / 100));
+}
+</script>
+
+Fish Population: <input type="number" id="population" value="100" min="0"><br>
+Number of Players: <input type="number" id="players" value="10" min="0"><br>
+Technological Frontier: <input type="number" id="tech" value="3" min="0"><br>
+Fertility Rate (0 - 100): <input type="number" id="growth" value="50" min= "0" max = "100"><br><br>
+
+<input type=button value="Get recommendation!" onClick="getRecommendation()"><br>
+Long-term Balance for this Tech-Level: <span id="globalBalance"></span><br>
+Recommendation for this round: <span id="rule"></span><br><br>
+
+Fish caught: <input type="number" id="fish" min="0"><br>
+<input type=button value="Run 1 Round!" onClick="calcPopulation()"><br><br>
+
