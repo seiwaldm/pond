@@ -28,5 +28,6 @@ Vue.createApp({
         calculatedRecommendation() {
             return this.fishPopulation / (this.playerCount * 100 / this.fertilityRate + this.playerCount);
         }
+
     }
 }).mount("#pond");
